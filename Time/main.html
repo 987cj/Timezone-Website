@@ -1,0 +1,298 @@
+<html>
+
+<head>
+    <title>Home</title>
+
+    <style media="screen">
+
+        .zonedisplay{
+            background-color: lightgray;
+            margin:auto;
+            padding: 5px;
+            margin-bottom: 5px;;
+        }
+
+        .spacingadjust{
+            display: table;
+            width: 100%;
+        }
+
+        .spacingadjustform {
+            display: table-cell;
+        }
+
+        .spacingadjustbtn {
+            text-align: right;
+        }
+
+        .zones {
+            padding: 0;
+            margin-left: 5px;
+            margin-top:auto;
+            margin-bottom: auto;
+            height: 25px;
+        }
+
+        .delete-button{
+            background-color: lightblue;
+        }
+
+        #addbutton{
+            background-color: lightgray;
+            margin-bottom: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- template for the display strips in html -->
+
+
+    <div class="zonedisplay">
+        <br>
+
+        <div class="spacingadjust">
+        <div class="spacingadjustform">
+            <form style="display: flex;" onchange="changetest()">
+                <h4> Timezone:</h4>
+                <select id="zones" name="Timezone">
+                    <option value="ACST" selected>ACST</option>
+                    <option value="GMT">GMT</option>
+                </select>
+            </form>
+
+        </div>
+        <div class="spacingadjustbtn">
+            <button type="button" name="button"> del button </button>
+        </div>
+        </div>
+
+        <h2 class="timer">Time</h2>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+    function changetest() {
+        console.log("changed");
+        var tester = document.getElementById('zones').value;
+        console.log(tester);
+    }
+
+    //check time function
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+
+    //time updater
+    function timeupdate() {
+
+        //getting the different time values
+        let newdate = new Date;
+            let xday = newdate.getUTCDay();
+            let xdate = String(newdate.getUTCDate());
+            let xmonth = newdate.getUTCMonth();
+            let xhour = newdate.getUTCHours();
+            let xminute = newdate.getUTCMinutes();
+            let xseconds = newdate.getUTCSeconds();
+            let xmeri = "AM"
+
+
+        //converting numerical values into actual reasonable values
+        switch (xday) {
+          case 0:
+            xday = "Sunday";
+            break;
+          case 1:
+            xday = "Monday";
+            break;
+          case 2:
+            xday = "Tuesday";
+            break;
+          case 3:
+            xday = "Wednesday";
+            break;
+          case 4:
+            xday = "Thursday";
+            break;
+          case 5:
+            xday = "Friday";
+            break;
+          case 6:
+            xday = "Saturday";
+            break;
+        }
+
+        switch (xmonth) {
+            case 0:
+                xmonth = "January";
+                break;
+            case 1:
+                xmonth = "February";
+                break;
+            case 2:
+                xmonth = "March";
+                break;
+            case 3:
+                xmonth = "April";
+                break;
+            case 4:
+                xmonth = "May";
+                break;
+            case 5:
+                xmonth = "June";
+                break;
+            case 6:
+                xmonth = "July";
+                break;
+            case 7:
+                xmonth = "August";
+                break;
+            case 8:
+                xmonth = "September";
+                break;
+            case 9:
+                xmonth = "October";
+                break;
+            case 10:
+                xmonth = "November";
+                break;
+            case 11:
+                xmonth = "December";
+                break;
+
+        }
+
+/*
+        if (xhour > 11) {
+            xhour -= 12;
+            xmeri = "PM";
+        }
+*/
+
+        var elements = document.getElementsByClassName('timer');
+        for(var i=0; i<elements.length; i++) {
+            elements[i].innerHTML = xday + " " + xdate + " " + xmonth;
+            elements[i].innerHTML += " " + xhour + ":" + xminute + ":" + xseconds + xmeri;
+        }
+    }
+
+    class Strip {
+        constructor(zone, time) {
+            this.zone = zone;
+            this.time = time;
+        }
+
+        timereturn() {
+            const today = new Date();
+            return today;
+        }
+
+        //creating the html output of the strip
+        stripcreate() {
+
+            //creating the various tags
+            const zonediv = document.createElement("div");
+            zonediv.classList.add('zonedisplay');
+
+            const linebr = document.createElement("br");
+
+            const spacingadjdiv = document.createElement("div");
+            spacingadjdiv.classList.add('spacingadjust');
+
+            const spacingadjform = document.createElement("div");
+            spacingadjform.classList.add('spacingadjustform');
+
+            const zoneform = document.createElement("form");
+            zoneform.style = "display: flex;";
+
+            const timehead = document.createElement("h4");
+            timehead.innerHTML = "Timezone:";
+
+            const formselect = document.createElement("select");
+            formselect.classList.add('zones');
+            formselect.name = "timezone";
+
+            //Timezone Options
+            const optionACST = document.createElement("option");
+            optionACST.value = "ACST";
+            optionACST.innerHTML = "ACST";
+
+            const optionGMT = document.createElement("option");
+            optionGMT.value = "GMT";
+            optionGMT.selected = true;
+            optionGMT.innerHTML = "GMT";
+
+            const spacingadjbtn = document.createElement("div");
+            spacingadjbtn.classList.add("spacingadjustbtn");
+
+            const btn = document.createElement("button");
+            btn.classList.add('delete-button');
+            btn.innerHTML = "Delete Button";
+            btn.onclick = function () {
+                removeParent(btn, 3);
+            }
+
+            const timeprint = document.createElement("h4");
+            timeprint.classList.add("timer");
+            timeprint.innerHTML = timeupdate();
+
+            //ordering the tags
+
+            //timezones
+            formselect.appendChild(optionACST);
+            formselect.appendChild(optionGMT);
+
+            zoneform.appendChild(timehead);
+            zoneform.appendChild(formselect);
+
+            spacingadjform.appendChild(zoneform);
+
+            spacingadjbtn.appendChild(btn);
+
+            spacingadjdiv.appendChild(spacingadjform);
+            spacingadjdiv.appendChild(spacingadjbtn);
+
+            zonediv.appendChild(linebr);
+            zonediv.appendChild(spacingadjdiv);
+            zonediv.appendChild(timeprint);
+
+            document.body.appendChild(zonediv);
+        }
+    }
+
+    //printing onto page
+    function timewrite() {
+        const myStrip = new Strip("AEST", new Date);
+        myStrip.stripcreate();
+    }
+
+    //function to remove parents
+    function removeParent(element, num) {
+        var parent = element;
+        for (var i = 0; i < num; i++) {
+            if (parent.parentNode) {
+                parent = parent.parentNode;
+            }
+        }
+        parent.remove();
+    }
+
+    //calling the time update
+    setInterval(timeupdate, 1);
+
+    </script>
+
+    <!-- Strip Creation Button !-->
+    <button id="addbutton" type="button" name="button" onclick="timewrite()">
+        <p> Button </p>
+    </button>
+
+</body>
+
+</html>
