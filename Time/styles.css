@@ -1,0 +1,37 @@
+.zonedisplay {
+  background-color: lightgray;
+  margin: auto;
+  padding: 5px;
+  margin-bottom: 5px;
+  ;
+}
+
+.spacingadjust {
+  display: table;
+  width: 100%;
+}
+
+.spacingadjustform {
+  display: table-cell;
+}
+
+.spacingadjustbtn {
+  text-align: right;
+}
+
+.zones {
+  padding: 0;
+  margin-left: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 25px;
+}
+
+.delete-button {
+  background-color: lightblue;
+}
+
+#addbutton {
+  background-color: lightgray;
+  margin-bottom: 5px;
+}
