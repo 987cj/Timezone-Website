@@ -10,11 +10,9 @@
 <body>
 
   <!-- template for the display strips in html -->
-  <div class="zonedisplay">
+  <div class="zonedisplay" id="zone1">
     <br>
 
-    <div class="spacingadjust">
-      <div class="spacingadjustform">
         <form style="display: flex;" onchange="changetest()">
           <h4> Timezone:</h4>
           <select id="zones" name="Timezone">
@@ -23,160 +21,10 @@
           </select>
         </form>
 
-      </div>
-      <div class="spacingadjustbtn">
-        <button type="button" name="button"> del button </button>
-      </div>
-    </div>
-
     <h2 class="timer">Time</h2>
 
   </div>
 
-<!-- import Strip class !-->
-  <script src="classStrip.js"></script>
-
-  <script type="text/javascript">
-    function changetest() {
-      console.log("changed");
-      var tester = document.getElementById('zones').value;
-      console.log(tester);
-    }
-
-    //check time function
-    function checkTime(i) {
-      if (i < 10) {
-        i = "0" + i
-      }; // add zero in front of numbers < 10
-      return i;
-    }
-
-    //time updater
-    function timeupdate() {
-
-      //getting the different time values
-      let newdate = new Date;
-      let xday = newdate.getUTCDay();
-      let xdate = String(newdate.getUTCDate());
-      let xmonth = newdate.getUTCMonth();
-      let xhour = newdate.getUTCHours();
-      let xminute = newdate.getUTCMinutes();
-      let xseconds = newdate.getUTCSeconds();
-      let xmeri = "AM"
-
-
-      //converting numerical values into actual reasonable values
-      switch (xday) {
-        case 0:
-          xday = "Sunday";
-          break;
-        case 1:
-          xday = "Monday";
-          break;
-        case 2:
-          xday = "Tuesday";
-          break;
-        case 3:
-          xday = "Wednesday";
-          break;
-        case 4:
-          xday = "Thursday";
-          break;
-        case 5:
-          xday = "Friday";
-          break;
-        case 6:
-          xday = "Saturday";
-          break;
-      }
-
-      switch (xmonth) {
-        case 0:
-          xmonth = "January";
-          break;
-        case 1:
-          xmonth = "February";
-          break;
-        case 2:
-          xmonth = "March";
-          break;
-        case 3:
-          xmonth = "April";
-          break;
-        case 4:
-          xmonth = "May";
-          break;
-        case 5:
-          xmonth = "June";
-          break;
-        case 6:
-          xmonth = "July";
-          break;
-        case 7:
-          xmonth = "August";
-          break;
-        case 8:
-          xmonth = "September";
-          break;
-        case 9:
-          xmonth = "October";
-          break;
-        case 10:
-          xmonth = "November";
-          break;
-        case 11:
-          xmonth = "December";
-          break;
-
-      }
-
-      /*
-              if (xhour > 11) {
-                  xhour -= 12;
-                  xmeri = "PM";
-              }
-      */
-
-      var elements = document.getElementsByClassName('timer');
-      for (var i = 0; i < elements.length; i++) {
-        elements[i].innerHTML = xday + " " + xdate + " " + xmonth;
-        elements[i].innerHTML += " " + xhour + ":" + xminute + ":" + xseconds + xmeri;
-      }
-    }
-
-    //printing onto page
-    function timewrite() {
-      const myStrip = new Strip("AEST", new Date);
-      myStrip.stripcreate();
-    }
-
-    //function to remove parents
-    function removeParent(element, num) {
-      var parent = element;
-      for (var i = 0; i < num; i++) {
-        if (parent.parentNode) {
-          parent = parent.parentNode;
-        }
-      }
-      parent.remove();
-    }
-
-    //calling the time update
-    setInterval(timeupdate, 1);
-
-  </script>
-
-  <!-- Strip Creation Button !-->
-  <button id="addbutton" type="button" name="button" onclick="timewrite()">
-    <p> Button </p>
-  </button>
-
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <!-- Load our React component. -->
-  <script src="like_button.js"></script>
 </body>
 
 </html>

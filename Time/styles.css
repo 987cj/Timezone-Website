@@ -3,35 +3,13 @@
   margin: auto;
   padding: 5px;
   margin-bottom: 5px;
-  ;
-}
-
-.spacingadjust {
-  display: table;
-  width: 100%;
-}
-
-.spacingadjustform {
-  display: table-cell;
-}
-
-.spacingadjustbtn {
-  text-align: right;
+  border-radius: 15px;
 }
 
 .zones {
   padding: 0;
-  margin-left: 5px;
+  margin-left: auto;
   margin-top: auto;
   margin-bottom: auto;
   height: 25px;
-}
-
-.delete-button {
-  background-color: lightblue;
-}
-
-#addbutton {
-  background-color: lightgray;
-  margin-bottom: 5px;
 }
