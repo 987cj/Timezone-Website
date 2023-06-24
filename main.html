@@ -12,9 +12,10 @@
 	<div id="zone_display">
 
 	<!-- template for the display strips in html -->
-		<div class="zonepanel">
+	<!--
+		<div class="zonepanel" id="asd">
 			<br>
-			<form onchange="changetest()">
+			<form onchange="changeZone(this);">
 				<h4> Timezone:</h4>
 				<select class="zones" name="Timezone">
 				<option value="ACST" selected>ACST</option>
@@ -26,6 +27,7 @@
 
 		</div>
 	</div>
+	-->
 
 <script>
 	const zone_display = document.getElementById("zone_display");
@@ -33,6 +35,18 @@
 	let	id_count = 0;
 
 	let timers = document.getElementsByClassName("timer");
+
+	function getPanel(id)
+	{
+		for (i = 0; i < disp_array.length; i++)
+		{
+			if (disp_array[i].id == id)
+			{
+				return (disp_array[i]);
+			}
+		}
+		return (null);
+	}
 
 	function addDisplay()
 	{
@@ -42,12 +56,29 @@
 		disp_array.push(a);
 	}
 
+	function changeZone(element)
+	{
+		let panel = getPanel(element.parentNode.id);
+		panel.update_time_zone(element.children[1].value);
+	}
+
 	function refreshTime()
 	{
 		for (i = 0; i < timers.length; i++)
 		{
-			let date = new Date().toLocaleString();
-			timers[i].innerHTML = date;
+			let time = new Date();
+			let panel = getPanel(timers[i].parentNode.id);
+			if (Number.isInteger(panel.time_add) == false)
+			{
+				time.setUTCMinutes(time.getUTCMinutes() + 30);
+				//negative minutes ?
+			}
+			time.setUTCHours(time.getUTCHours() + panel.time_add);
+			let time_string;
+			time_string = time.getUTCHours().toString();
+			time_string += ":" + time.getUTCMinutes().toString();
+			time_string += ":" + time.getUTCSeconds().toString();
+			timers[i].innerHTML = time_string;
 		}
 	}
 
