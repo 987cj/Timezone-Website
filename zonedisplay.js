@@ -19,5 +19,6 @@ class ZonePanel {
 		disp_string += "</div>";
 
 		zone.innerHTML += disp_string;
+		
 	}
 }

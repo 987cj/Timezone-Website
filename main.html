@@ -28,9 +28,11 @@
 	</div>
 
 <script>
-	zone_display = document.getElementById("zone_display");
-	const disp_array = [];
+	const zone_display = document.getElementById("zone_display");
+	let disp_array = [];
 	let	id_count = 0;
+
+	let timers = document.getElementsByClassName("timer");
 
 	function addDisplay()
 	{
@@ -38,10 +40,18 @@
 		a.create_disp(zone_display);
 		id_count++;
 		disp_array.push(a);
-
-		let now = Date.now();
-		zone_display += "<p>" + now + "</p>";
 	}
+
+	function refreshTime()
+	{
+		for (i = 0; i < timers.length; i++)
+		{
+			let date = new Date().toLocaleString();
+			timers[i].innerHTML = date;
+		}
+	}
+
+	setInterval(refreshTime, 1000);
 </script>
 
 </body>
