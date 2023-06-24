@@ -1,4 +1,11 @@
-.zonedisplay {
+#addDisplay {
+  width: 100%;
+  background-color: lightgray;
+  text-decoration-color: white;
+  margin-bottom: 5px;
+}
+
+.zonepanel {
   background-color: lightgray;
   margin: auto;
   padding: 5px;
@@ -6,6 +13,11 @@
   border-radius: 15px;
 }
 
+.zonepanel form {
+  display: flex;
+}
+
+/*
 .zones {
   padding: 0;
   margin-left: auto;
@@ -13,3 +25,4 @@
   margin-bottom: auto;
   height: 25px;
 }
+*/
