@@ -84,8 +84,14 @@
 			let panel = getPanel(timers[i].parentNode.id);
 			if (Number.isInteger(panel.time_add) == false)
 			{
-				time.setUTCMinutes(time.getUTCMinutes() + 30);
-				//negative minutes ?
+				if (panel.time_add < 0)
+				{
+					time.setUTCMinutes(time.getUTCMinutes() - 30);
+				}
+				else
+				{
+					time.setUTCMinutes(time.getUTCMinutes() + 30);
+				}
 			}
 			time.setUTCHours(time.getUTCHours() + panel.time_add);
 			let time_string;
