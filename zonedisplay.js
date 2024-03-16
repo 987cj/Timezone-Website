@@ -10,8 +10,6 @@ class	ZonePanel {
 	{
 		let disp_string = "";
 		disp_string += "<div class=\"zonepanel\" id=\"" + this.id + "\">";
-		disp_string += "<br>";
-		disp_string += "<h4>Timezone:</h4>";
 		disp_string += "<select type=\"select\" class=\"zones\" onchange=\"changeZone(this);\">";
 		disp_string += "<option value=\"-12\">UTC -12:00</option>";
 		disp_string += "<option value=\"-11\">UTC -11:00</option>";

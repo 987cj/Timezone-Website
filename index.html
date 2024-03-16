@@ -4,22 +4,25 @@
 	<title>Timezone Site</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script type="text/javascript" src="zonedisplay.js"></script>
+	<meta http-equiv='cache-control' content='no-cache'> 
+	<meta http-equiv='expires' content='0'> 
+	<meta http-equiv='pragma' content='no-cache'>
 </head>
 
 <body>
-	<button id="addDisplay" onclick="addDisplay();">+</button>
+	<div id="addDisplay">
+	<button onclick="addDisplay();">+</button>
+	</div>
 	<br>
 	<div id="zone_display">
 
 	<!-- template for the display strips in html -->
 	<!--
 		<div class="zonepanel" id="asd">
-			<br>
-				<h4> Timezone:</h4>
-				<select onchange="changeZone(this);" class="zones" name="Timezone">
-				<option value="ACST" selected>ACST</option>
-				<option value="GMT">GMT</option>
-				</select>
+			<select onchange="changeZone(this);" class="zones" name="Timezone">
+			<option value="ACST" selected>ACST</option>
+			<option value="GMT">GMT</option>
+			</select>
 
 			<h2 class="timer">Time</h2>
 
@@ -46,7 +49,7 @@
 	function addDisplay()
 	{
 		let a = new ZonePanel(id_count);
-		a.create_disp(zone_display, event);
+		a.create_disp(zone_display);
 		reloadZones();
 		id_count++;
 		disp_array.push(a);
@@ -62,7 +65,7 @@
 		for (i = 0; i < disp_array.length; i++)
 		{
 			let dom_panel = document.getElementById(disp_array[i].id);
-			dom_panel.children[2].value = disp_array[i].zone;
+			dom_panel.children[0].value = disp_array[i].zone;
 		}
 	}
 	function refreshTime()
