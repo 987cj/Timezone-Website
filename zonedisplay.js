@@ -1,9 +1,9 @@
 // define new timezone object
-class ZonePanel {
+class	ZonePanel {
 	constructor(id)
 	{
 		this.id = id;
-		this.zone = "GMT";
+		this.zone = "UTC +00:00";
 		this.time_add = 0;
 	}
 	create_disp(zone)
@@ -13,13 +13,44 @@ class ZonePanel {
 		disp_string += "<br>";
 		disp_string += "<h4>Timezone:</h4>";
 		disp_string += "<select type=\"select\" class=\"zones\" onchange=\"changeZone(this);\">";
-		disp_string += "<option value=\"ACDT\">ACDT +10:30</option>";
-		disp_string += "<option value=\"ACST\">ACST +09:30</option>";
-		disp_string += "<option value=\"ACT\">ACT -05:00</option>";
-		disp_string += "<option value=\"ADT\">ADT -03:00</option>";
-		disp_string += "<option value=\"AEDT\">AEDT +11:00</option>";
-		disp_string += "<option value=\"ACT\">ACT</option>";
-		disp_string += "<option value=\"GMT\" selected>GMT</option>";
+		disp_string += "<option value=\"-12\">UTC -12:00</option>";
+		disp_string += "<option value=\"-11\">UTC -11:00</option>";
+		disp_string += "<option value=\"-10\">UTC -10:00</option>";
+		disp_string += "<option value=\"-9.5\">UTC -09:30</option>";
+		disp_string += "<option value=\"-9\">UTC -09:00</option>";
+		disp_string += "<option value=\"-8\">UTC -08:00</option>";
+		disp_string += "<option value=\"-7\">UTC -07:00</option>";
+		disp_string += "<option value=\"-6\">UTC -06:00</option>";
+		disp_string += "<option value=\"-5\">UTC -05:00</option>";
+		disp_string += "<option value=\"-4\">UTC -04:00</option>";
+		disp_string += "<option value=\"-3.5\">UTC -03:30</option>";
+		disp_string += "<option value=\"-3\">UTC -03:00</option>";
+		disp_string += "<option value=\"-2\">UTC -02:00</option>";
+		disp_string += "<option value=\"-1\">UTC -01:00</option>";
+		disp_string += "<option value=\"0\" selected>UTC +00:00</option>";
+		disp_string += "<option value=\"1\">UTC +01:00</option>";
+		disp_string += "<option value=\"2\">UTC +02:00</option>";
+		disp_string += "<option value=\"3\">UTC +03:00</option>";
+		disp_string += "<option value=\"3.5\">UTC +03:30</option>";
+		disp_string += "<option value=\"4\">UTC +04:00</option>";
+		disp_string += "<option value=\"4.5\">UTC +04:30</option>";
+		disp_string += "<option value=\"5\">UTC +05:00</option>";
+		disp_string += "<option value=\"5.5\">UTC +05:30</option>";
+		disp_string += "<option value=\"5.75\">UTC +05:45</option>";
+		disp_string += "<option value=\"6\">UTC +06:00</option>";
+		disp_string += "<option value=\"6.5\">UTC +06:30</option>";
+		disp_string += "<option value=\"7\">UTC +07:00</option>";
+		disp_string += "<option value=\"8\">UTC +08:00</option>";
+		disp_string += "<option value=\"8.75\">UTC +08:45</option>";
+		disp_string += "<option value=\"9\">UTC +09:00</option>";
+		disp_string += "<option value=\"9.5\">UTC +09:30</option>";
+		disp_string += "<option value=\"10\">UTC +10:00</option>";
+		disp_string += "<option value=\"10.5\">UTC +10:30</option>";
+		disp_string += "<option value=\"11\">UTC +11:00</option>";
+		disp_string += "<option value=\"12\">UTC +12:00</option>";
+		disp_string += "<option value=\"12.75\">UTC +12:45</option>";
+		disp_string += "<option value=\"13\">UTC +13:00</option>";
+		disp_string += "<option value=\"14\">UTC +14:00</option>";
 		disp_string += "</select>";
 		disp_string += "<h2 class=\"timer\"></h2>";
 		disp_string += "</div>";
@@ -28,30 +59,6 @@ class ZonePanel {
 	}
 	update_time_zone(zone)
 	{
-		this.zone = zone;
-		switch(zone)
-		{
-			case "GMT":
-				this.time_add = 0;
-				break;
-			case "ACDT":
-				this.time_add = 10.5;
-				break;
-			case "ACST":
-				this.time_add = 9.5;
-				break;
-			case "ACT":
-				this.time_add = -5;
-				break;
-			case "ADT":
-				this.time_add = -3;
-				break;
-			case "AEDT":
-				this.time_add = 11;
-				break;
-			default:
-				this.time_add = 0;
-				break;
-		}
+		this.time_add = parseFloat(zone);
 	}
 }

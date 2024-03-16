@@ -1,8 +1,8 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<title>Timezone Site</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script type="text/javascript" src="zonedisplay.js"></script>
 </head>
 
@@ -39,13 +39,10 @@
 		for (i = 0; i < disp_array.length; i++)
 		{
 			if (disp_array[i].id == id)
-			{
 				return (disp_array[i]);
-			}
 		}
 		return (null);
 	}
-
 	function addDisplay()
 	{
 		let a = new ZonePanel(id_count);
@@ -54,13 +51,11 @@
 		id_count++;
 		disp_array.push(a);
 	}
-
 	function changeZone(element)
 	{
 		let panel = getPanel(element.parentNode.id);
 		panel.update_time_zone(element.value);
 	}
-
 	function reloadZones()
 	{
 		//updating innerHTML resets options - have to reload them
