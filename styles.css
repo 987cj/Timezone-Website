@@ -1,3 +1,7 @@
+html {
+	font-family: sans-serif;
+}
+
 #addDisplay {
   width: 100%;
   background-color: lightgray;
@@ -14,15 +18,5 @@
 }
 
 .zones {
-  display: flex;
+  display: inline;
 }
-
-/*
-.zones {
-  padding: 0;
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-  height: 25px;
-}
-*/

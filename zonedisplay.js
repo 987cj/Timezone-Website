@@ -3,7 +3,7 @@ class	ZonePanel {
 	constructor(id)
 	{
 		this.id = id;
-		this.zone = "UTC +00:00";
+		this.zone = "0";
 		this.time_add = 0;
 	}
 	create_disp(zone)
@@ -59,6 +59,7 @@ class	ZonePanel {
 	}
 	update_time_zone(zone)
 	{
+		this.zone = zone;
 		this.time_add = parseFloat(zone);
 	}
 }
