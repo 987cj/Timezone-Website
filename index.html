@@ -10,6 +10,9 @@
 </head>
 
 <body>
+	<div id="timeMenu">
+		<h1 id="menuTimer">Time</h1>
+	</div>
 	<div id="addDisplay">
 	<button onclick="addDisplay();">+</button>
 	</div>
@@ -103,6 +106,16 @@
 	}
 
 	setInterval(refreshTime, 500);
+
+	function refreshMenuTimer()
+	{
+		const menu_timer = document.getElementById("menuTimer");
+
+		let time = new Date();
+		menu_timer.innerHTML = time.toLocaleTimeString();
+	}
+
+	setInterval(refreshMenuTimer, 500);
 </script>
 
 </body>
