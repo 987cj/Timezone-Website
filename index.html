@@ -10,16 +10,18 @@
 </head>
 
 <body>
-	<div id="timeMenu">
-		<h1 id="menuTimer"><br></h1>
-		<input type="datetime-local" id="dateTimeSelect" oninput="selectedTimeChange()">
-		<input type="radio" name="optionSelect" value="selectDateTime" id="selectDateTime" onchange="displayDateTimeSelect()">
-		<label for="selectDateTime">Select Date & Time</label>
-		<input type="radio" name="optionSelect" value="current" id="selectCurrent" checked="checked" onchange="displayDateTimeSelect()">
-		<label for="current">Current Time</label>
-	</div>
-	<div id="addDisplay">
-	<button onclick="addDisplay();">+</button>
+	<div class="sticky">
+		<div id="timeMenu">
+			<h1 id="menuTimer"><br></h1>
+			<input type="datetime-local" id="dateTimeSelect" oninput="selectedTimeChange()">
+			<input type="radio" name="optionSelect" value="selectDateTime" id="selectDateTime" onchange="displayDateTimeSelect()">
+			<label for="selectDateTime">Select Date & Time</label>
+			<input type="radio" name="optionSelect" value="current" id="selectCurrent" checked="checked" onchange="displayDateTimeSelect()">
+			<label for="current">Current Time</label>
+		</div>
+		<div id="addDisplay">
+			<button onclick="addDisplay();">+</button>
+		</div>
 	</div>
 	<br>
 	<div id="zone_display">
@@ -99,9 +101,14 @@
 			if (Number.isInteger(panel.time_add) == false)
 			{
 				if (panel.time_add < 0)
+				{
 					time.setUTCMinutes(time.getUTCMinutes() - 30);
+				}
 				else
+				{
+					console.log(panel.time_add);
 					time.setUTCMinutes(time.getUTCMinutes() + 30);
+				}
 			}
 
 			time.setUTCHours(time.getUTCHours() + panel.time_add);

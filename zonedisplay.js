@@ -50,7 +50,7 @@ class	ZonePanel {
 		disp_string += "<option value=\"13\">UTC +13:00</option>";
 		disp_string += "<option value=\"14\">UTC +14:00</option>";
 		disp_string += "</select>";
-		disp_string += "<h2 class=\"timer\"></h2>";
+		disp_string += "<h2 class=\"timer\"><br></h2>";
 		disp_string += "</div>";
 
 		zone.innerHTML += disp_string;

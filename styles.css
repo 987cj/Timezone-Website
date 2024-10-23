@@ -3,6 +3,14 @@ html {
 }
 body {
 	margin: 10px;
+	margin-top: 0px;
+}
+
+.sticky {
+	position: sticky;
+	top: 0px;
+	background-color: white;
+	padding-top: 10px;
 }
 
 #timeMenu {
@@ -30,8 +38,6 @@ body {
 	padding: 5px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	position: sticky;
-	top: 0px;
 }
 
 #addDisplay button {
