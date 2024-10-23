@@ -12,6 +12,11 @@
 <body>
 	<div id="timeMenu">
 		<h1 id="menuTimer">Time</h1>
+		<input type="radio" name="optionSelect" value="current" checked="checked" oninput="displayDateTimeSelect()">
+		<label for="current">Current Time</label>
+		<input type="radio" name="optionSelect" value="selectDateTime" id="selectDateTime" oninput="displayDateTimeSelect()">
+		<label for="selectDateTime">Select Date & Time</label>
+		<input type="datetime-local" id="dateTimeSelect">
 	</div>
 	<div id="addDisplay">
 	<button onclick="addDisplay();">+</button>
@@ -37,6 +42,9 @@
 	const zone_display = document.getElementById("zone_display");
 	let disp_array = [];
 	let	id_count = 0;
+	let	currenttime = true;
+	var refresh_timer;
+	var refresh_menu_timer;
 
 	let timers = document.getElementsByClassName("timer");
 
@@ -114,8 +122,6 @@
 		}
 	}
 
-	setInterval(refreshTime, 500);
-
 	function refreshMenuTimer()
 	{
 		const menu_timer = document.getElementById("menuTimer");
@@ -124,7 +130,37 @@
 		menu_timer.innerHTML = time.toLocaleTimeString();
 	}
 
-	setInterval(refreshMenuTimer, 500);
+	function displayDateTimeSelect()
+	{
+		const dateTimeSelect = document.getElementById("dateTimeSelect");
+		const selectDateTime = document.getElementById("selectDateTime");
+		
+		if (selectDateTime.checked)
+		{
+			dateTimeSelect.style.display = "inline";
+			currenttime = false;
+			clearInterval(refresh_timer);
+			clearInterval(refresh_menu_timer);
+		}
+		else
+		{
+			dateTimeSelect.style.display = "none";
+			currenttime = true;
+			refresh_timer = setInterval(refreshTime, 500);
+			refresh_menu_timer = setInterval(refreshMenuTimer, 500);
+		}
+	}
+
+	if (currenttime = true)
+	{
+		refresh_timer = setInterval(refreshTime, 500);
+		refresh_menu_timer = setInterval(refreshMenuTimer, 500);
+	}
+	else
+	{
+		clearInterval(refresh_timer);
+		clearInterval(refresh_menu_timer);
+	}
 </script>
 
 </body>
