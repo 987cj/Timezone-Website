@@ -243,6 +243,7 @@
 		let new_time = new Date(date_time_select.value);
 		selectedtime = new_time.toUTCString();
 
+		clearInterval(refresh_timer);
 		refresh_timer = setInterval(refreshTimeTimed, 500, selectedtime);
 		refreshMenuTimerTimed(selectedtime);
 	}
