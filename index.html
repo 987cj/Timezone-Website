@@ -12,11 +12,11 @@
 <body>
 	<div id="timeMenu">
 		<h1 id="menuTimer">Time</h1>
-		<input type="radio" name="optionSelect" value="current" id="selectCurrent" checked="checked" onchange="displayDateTimeSelect()">
-		<label for="current">Current Time</label>
+		<input type="datetime-local" id="dateTimeSelect" oninput="selectedTimeChange()">
 		<input type="radio" name="optionSelect" value="selectDateTime" id="selectDateTime" onchange="displayDateTimeSelect()">
 		<label for="selectDateTime">Select Date & Time</label>
-		<input type="datetime-local" id="dateTimeSelect" oninput="selectedTimeChange()">
+		<input type="radio" name="optionSelect" value="current" id="selectCurrent" checked="checked" onchange="displayDateTimeSelect()">
+		<label for="current">Current Time</label>
 	</div>
 	<div id="addDisplay">
 	<button onclick="addDisplay();">+</button>
@@ -132,7 +132,10 @@
 		const menu_timer = document.getElementById("menuTimer");
 
 		let time = new Date();
-		menu_timer.innerHTML = time.toLocaleTimeString();
+		menu_timer.innerHTML = weekday[time.getDay()] + " ";
+		menu_timer.innerHTML += time.getDate().toString() + " ";
+		menu_timer.innerHTML += month[time.getMonth()] + " ";
+		menu_timer.innerHTML += time.toLocaleTimeString();
 	}
 	function refreshTimeTimed(newtime)
 	{
@@ -176,7 +179,10 @@
 		const menu_timer = document.getElementById("menuTimer");
 
 		let time = new Date(newtime);
-		menu_timer.innerHTML = time.toLocaleTimeString();
+		menu_timer.innerHTML = weekday[time.getDay()] + " ";
+		menu_timer.innerHTML += time.getDate().toString() + " ";
+		menu_timer.innerHTML += month[time.getMonth()] + " ";
+		menu_timer.innerHTML += time.toLocaleTimeString();
 	}
 
 	function displayDateTimeSelect()
@@ -194,6 +200,7 @@
 		{
 			date_time_select.style.display = "none";
 			currenttime = true;
+			clearInterval(refresh_timer);
 			refresh_timer = setInterval(refreshTime, 500);
 			refresh_menu_timer = setInterval(refreshMenuTimer, 500);
 			selectedtime = "z";
@@ -208,8 +215,8 @@
 		let new_time = new Date(date_time_select.value);
 		selectedtime = new_time.toUTCString();
 
+		refresh_timer = setInterval(refreshTimeTimed, 500, selectedtime);
 		refreshMenuTimerTimed(selectedtime);
-		refreshTimeTimed(selectedtime);
 	}
 
 	if (currenttime = true)
