@@ -85,22 +85,31 @@
 			if (Number.isInteger(panel.time_add) == false)
 			{
 				if (panel.time_add < 0)
-				{
 					time.setUTCMinutes(time.getUTCMinutes() - 30);
-				}
 				else
-				{
 					time.setUTCMinutes(time.getUTCMinutes() + 30);
-				}
 			}
+
 			time.setUTCHours(time.getUTCHours() + panel.time_add);
 			let time_string;
 			time_string = weekday[time.getUTCDay()] + " ";
 			time_string += time.getUTCDate().toString() + " ";
 			time_string += month[time.getUTCMonth()] + " ";
-			time_string += time.getUTCHours().toString();
-			time_string += ":" + time.getUTCMinutes().toString();
-			time_string += ":" + time.getUTCSeconds().toString();
+
+			let temp = time.getUTCHours().toString();
+			if (temp.length == 1)
+				temp = "0" + temp;
+			time_string += temp + ":";
+
+			temp = time.getUTCMinutes().toString();
+			if (temp.length == 1)
+				temp = "0" + temp;
+			time_string += temp + ":";
+
+			temp = time.getUTCSeconds().toString();
+			if (temp.length == 1)
+				temp = "0" + temp;
+			time_string += temp;
 			timers[i].innerHTML = time_string;
 		}
 	}
