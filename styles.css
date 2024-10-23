@@ -10,7 +10,7 @@ body {
 	padding: 5px;
 	box-sizing: border-box;
 	border-radius: 15px;
-	background-color: forestgreen;
+	background-color: green;
 }
 
 #timeMenu h1 {
@@ -33,9 +33,19 @@ body {
 
 #addDisplay button {
 	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 0;
+	background-color: lightgray;
+	font-weight: 600;
 }
+
+#addDisplay button:hover {
+	background-color: silver;
+}
+
 .zonepanel {
-	background-color: palegreen;
+	background-color: forestgreen;
 	padding: 5px;
 	margin-left: 10px;
 	margin-right: 15px;
@@ -47,5 +57,11 @@ body {
 
 .zones {
 	width: 100px;
-	border-radius: 15px;
+	border-radius: 10px;
+	border: 0;
 }
+
+.timer {
+	color: white;
+}
+
