@@ -101,13 +101,15 @@
 			if (Number.isInteger(panel.time_add) == false)
 			{
 				if (panel.time_add < 0)
-				{
 					time.setUTCMinutes(time.getUTCMinutes() - 30);
-				}
 				else
 				{
-					console.log(panel.time_add);
-					time.setUTCMinutes(time.getUTCMinutes() + 30);
+					let decimals = panel.time_add - Math.floor(panel.time_add);
+					decimals = decimals.toFixed(2);
+					if (decimals == 0.5)
+						time.setUTCMinutes(time.getUTCMinutes() + 30);
+					else
+						time.setUTCMinutes(time.getUTCMinutes() + 45);
 				}
 			}
 
@@ -169,7 +171,14 @@
 				if (panel.time_add < 0)
 					time.setUTCMinutes(time.getUTCMinutes() - 30);
 				else
-					time.setUTCMinutes(time.getUTCMinutes() + 30);
+				{
+					let decimals = panel.time_add - Math.floor(panel.time_add);
+					decimals = decimals.toFixed(2);
+					if (decimals == 0.5)
+						time.setUTCMinutes(time.getUTCMinutes() + 30);
+					else
+						time.setUTCMinutes(time.getUTCMinutes() + 45);
+				}
 			}
 
 			time.setUTCHours(time.getUTCHours() + panel.time_add);
